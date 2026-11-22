@@ -1,13 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="OX Mining — Auto-mine OX coins, earn rewards, and boost your earnings." />
-  <title>🐂 OX Mining</title>
+  <meta name="description" content="ROCKET Mining — Mine ROKT points, earn rewards, and boost your earnings." />
+  <title>🚀 ROCKET Mining</title>
 
   <!-- Telegram WebApp SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
   <!-- Monetag Rewarded Interstitial SDK -->
   <script src="//libtl.com/sdk.js" data-zone="11824725" data-sdk="show_11824725"></script>
 
@@ -18,7 +20,7 @@
 
 <!-- ===== LOADER ===== -->
 <div class="loader-overlay" id="loader">
-  <div class="loader-logo">🐂</div>
+  <div class="loader-logo">🚀</div>
   <div class="loader-text">Loading<span class="loader-dots"></span></div>
 </div>
 
@@ -33,15 +35,16 @@
   <!-- HEADER -->
   <header class="header">
     <div class="header-logo">
-      <div class="header-logo-icon">🐂</div>
+      <div class="header-logo-icon">🚀</div>
       <div>
-        <div class="header-logo-text">OX Mining</div>
+        <div class="header-logo-text">ROCKET Mining</div>
         <div class="header-logo-sub">Earn while you sleep</div>
       </div>
     </div>
+
     <img class="header-avatar" id="user-avatar"
          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%234299e1'/%3E%3Ctext x='18' y='23' text-anchor='middle' font-size='18' fill='white'%3E👤%3C/text%3E%3C/svg%3E"
-          alt="Profile" onclick="showScreen('profile')" />
+         alt="Profile" onclick="showScreen('profile')" />
   </header>
 
   <!-- ===== SCREEN: MINE ===== -->
@@ -51,13 +54,13 @@
     <div class="mining-hero">
       <div class="balance-display">
         <div class="balance-amount" id="balance-amount" data-value="0">0</div>
-        <div class="balance-label">Total OX</div>
+        <div class="balance-label">Total ROKT</div>
       </div>
 
       <!-- Mining Orb -->
       <div class="mining-orb-wrap" style="margin:24px auto 0;">
         <div class="mining-orb" id="mining-orb">
-          <div class="mining-orb-icon">🐂</div>
+          <div class="mining-orb-icon">🚀</div>
           <div class="mining-orb-label" id="orb-label">TAP START</div>
         </div>
       </div>
@@ -66,7 +69,7 @@
       <div style="margin-top:16px;">
         <div class="mining-rate-badge">
           <span class="dot"></span>
-          <span id="mining-rate-badge">+10 / hour</span>
+          <span id="mining-rate-badge">+10 ROKT / hour</span>
         </div>
       </div>
 
@@ -86,16 +89,17 @@
         </div>
       </div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:6px;" id="progress-time">
-        Start mining to earn coins
+        Start mining to earn ROKT points
       </div>
     </div>
 
     <!-- Mining Buttons -->
     <button class="btn btn-primary" id="btn-start-mining" onclick="startMining()">
-      🐂 Start Mining
+      🚀 Start Mining
     </button>
+
     <button class="btn btn-gold" id="btn-claim-mining" onclick="claimMining()" style="display:none;margin-top:10px;" disabled>
-      🐂 Claim OX
+      🚀 Claim ROKT
     </button>
 
     <!-- Quick Actions -->
@@ -103,28 +107,31 @@
       <div class="action-btn" onclick="watchAd()" id="btn-watch-ad-wrap">
         <div class="action-btn-icon">🎬</div>
         <div class="action-btn-label">Watch Ad</div>
-        <div class="action-btn-reward">+100 OX</div>
+        <div class="action-btn-reward">+100 ROKT</div>
       </div>
+
       <div class="action-btn" onclick="showScreen('boost')">
         <div class="action-btn-icon">🚀</div>
         <div class="action-btn-label">Boost</div>
         <div class="action-btn-reward">↑Rate</div>
       </div>
+
       <div class="action-btn" onclick="showScreen('referral')">
         <div class="action-btn-icon">👥</div>
         <div class="action-btn-label">Friends</div>
-        <div class="action-btn-reward">+500 OX</div>
+        <div class="action-btn-reward">+500 ROKT</div>
       </div>
+
       <div class="action-btn" onclick="openDailyModal()">
         <div class="action-btn-icon">🎁</div>
         <div class="action-btn-label">Daily</div>
-        <div class="action-btn-reward">+1000 OX</div>
+        <div class="action-btn-reward">+1000 ROKT</div>
       </div>
     </div>
 
     <!-- Watch Ad Full Button -->
     <button class="btn btn-outline" id="btn-watch-ad" onclick="watchAd()" style="margin-top:10px;">
-      🎬 Watch Ad +100 OX
+      🎬 Watch Ad +100 ROKT
     </button>
 
   </main>
@@ -141,11 +148,11 @@
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <div>
           <div style="font-size:12px;color:var(--text-muted);">Current Rate</div>
-          <div style="font-size:22px;font-weight:800;color:var(--green)" id="boost-current-rate">10 OX/hr</div>
+          <div style="font-size:22px;font-weight:800;color:var(--green)" id="boost-current-rate">10 ROKT/hr</div>
         </div>
         <div style="text-align:right;">
           <div style="font-size:12px;color:var(--text-muted);">Max per session</div>
-          <div style="font-size:18px;font-weight:700;color:var(--gold)">800 OX</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold)">800 ROKT</div>
         </div>
       </div>
     </div>
@@ -157,26 +164,29 @@
 
     <!-- Coin Packages -->
     <div class="divider"></div>
-    <div class="section-title">💰 Buy Coins</div>
+    <div class="section-title">💰 ROKT Packages</div>
+
     <div style="display:flex;flex-direction:column;gap:10px;">
-      <div class="glass-card" style="padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="showToast('Open Telegram to purchase','error')">
+      <div class="glass-card" style="padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="showToast('Demo package only','error')">
         <div>
-          <div style="font-weight:700;">10,000 OX</div>
-          <div style="font-size:12px;color:var(--text-secondary);">Instant credit</div>
+          <div style="font-weight:700;">10,000 ROKT</div>
+          <div style="font-size:12px;color:var(--text-secondary);">Demo points package</div>
         </div>
         <div class="btn btn-gold btn-sm" style="width:auto;">⭐ 100</div>
       </div>
-      <div class="glass-card" style="padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="showToast('Open Telegram to purchase','error')">
+
+      <div class="glass-card" style="padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="showToast('Demo package only','error')">
         <div>
-          <div style="font-weight:700;">60,000 OX <span class="badge badge-green">+20%</span></div>
-          <div style="font-size:12px;color:var(--text-secondary);">Best value</div>
+          <div style="font-weight:700;">60,000 ROKT <span class="badge badge-green">+20%</span></div>
+          <div style="font-size:12px;color:var(--text-secondary);">Demo points package</div>
         </div>
         <div class="btn btn-gold btn-sm" style="width:auto;">⭐ 500</div>
       </div>
-      <div class="glass-card" style="padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="showToast('Open Telegram to purchase','error')">
+
+      <div class="glass-card" style="padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="showToast('Demo package only','error')">
         <div>
-          <div style="font-weight:700;">130,000 OX <span class="badge badge-blue">💎 Max</span></div>
-          <div style="font-size:12px;color:var(--text-secondary);">Best savings</div>
+          <div style="font-weight:700;">130,000 ROKT <span class="badge badge-blue">💎 Max</span></div>
+          <div style="font-size:12px;color:var(--text-secondary);">Demo points package</div>
         </div>
         <div class="btn btn-gold btn-sm" style="width:auto;">⭐ 1000</div>
       </div>
@@ -187,7 +197,7 @@
   <main class="screen" id="screen-referral">
     <h1 style="font-size:20px;font-weight:800;margin-bottom:4px;">👥 Invite Friends</h1>
     <p style="color:var(--text-secondary);font-size:13px;margin-bottom:20px;">
-      Earn up to <span class="text-gold">+500 OX</span> per qualified referral
+      Earn up to <span class="text-gold">+500 ROKT</span> per qualified referral
     </p>
 
     <!-- Stats -->
@@ -212,6 +222,7 @@
       <div class="referral-link" id="referral-link-text">Loading...</div>
       <button class="copy-btn" id="copy-ref-btn" onclick="copyReferralLink()">📋 Copy</button>
     </div>
+
     <button class="btn btn-primary" onclick="shareReferralLink()">
       📤 Share with Friends
     </button>
@@ -219,15 +230,16 @@
     <!-- How it works -->
     <div class="divider"></div>
     <div class="section-title">📖 How It Works</div>
+
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div class="glass-card" style="padding:14px;">
         <div style="font-size:13px;color:var(--text-secondary);">1️⃣ Friend joins via your link</div>
       </div>
       <div class="glass-card" style="padding:14px;">
-        <div style="font-size:13px;color:var(--text-secondary);">2️⃣ Friend completes first mining → <span class="text-green">+250 OX</span></div>
+        <div style="font-size:13px;color:var(--text-secondary);">2️⃣ Friend completes first mining → <span class="text-green">+250 ROKT</span></div>
       </div>
       <div class="glass-card" style="padding:14px;">
-        <div style="font-size:13px;color:var(--text-secondary);">3️⃣ Friend stays 24h active → <span class="text-green">+250 OX</span></div>
+        <div style="font-size:13px;color:var(--text-secondary);">3️⃣ Friend stays 24h active → <span class="text-green">+250 ROKT</span></div>
       </div>
     </div>
   </main>
@@ -236,7 +248,7 @@
   <main class="screen" id="screen-tasks">
     <h1 style="font-size:20px;font-weight:800;margin-bottom:4px;">📋 Tasks</h1>
     <p style="color:var(--text-secondary);font-size:13px;margin-bottom:20px;">
-      Complete tasks to earn extra OX
+      Complete tasks to earn extra ROKT
     </p>
 
     <!-- Admin: Add Task Button -->
@@ -293,14 +305,16 @@
           <div class="profile-id" id="profile-id"></div>
         </div>
       </div>
+
       <div class="profile-stats">
         <div><span>Available</span><strong id="profile-available">0</strong></div>
         <div><span>Pending</span><strong id="profile-pending">0</strong></div>
         <div><span>Mined</span><strong id="profile-mined">0</strong></div>
       </div>
+
       <div class="profile-plan">
         <span>Mining rate</span>
-        <strong id="profile-rate">0 / hour</strong>
+        <strong id="profile-rate">0 ROKT / hour</strong>
       </div>
     </div>
 
@@ -309,63 +323,31 @@
 
   <!-- ===== SCREEN: WITHDRAW ===== -->
   <main class="screen" id="screen-withdraw">
-    <h1 style="font-size:20px;font-weight:800;margin-bottom:4px;">💸 Withdraw</h1>
+    <h1 style="font-size:20px;font-weight:800;margin-bottom:4px;">💸 Points Request</h1>
     <p style="color:var(--text-secondary);font-size:13px;margin-bottom:20px;">
-      Minimum <span class="text-gold">1,000,000 OX</span> · 5% fee
+      Demo points only — no cash or crypto payout
     </p>
 
     <!-- Balance -->
     <div class="glass-card" style="padding:16px;margin-bottom:16px;">
-      <div style="font-size:12px;color:var(--text-muted);">Available Balance</div>
+      <div style="font-size:12px;color:var(--text-muted);">Available ROKT Points</div>
       <div style="font-size:28px;font-weight:800;" id="withdraw-available">0</div>
       <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">
-        Minimum: <span id="withdraw-min">1,000,000</span> OX
+        Demo points balance
       </div>
     </div>
 
-    <!-- Coin conversion -->
-    <div class="conversion-card">
-      <div class="conversion-heading">
-        <span class="conversion-icon">৳</span>
-        <div>
-          <strong>Coin conversion</strong>
-          <span>Estimated value before the 5% fee</span>
-        </div>
-      </div>
-      <div class="conversion-rate"><span id="withdraw-rate">1,000</span> Coins = <strong>৳1</strong></div>
-      <div class="conversion-breakdown">
-        <div><span>Gross value</span><strong id="withdraw-gross">৳0</strong></div>
-        <div><span>Platform fee</span><strong id="withdraw-fee">৳0</strong></div>
-        <div><span>You receive</span><strong class="conversion-net" id="withdraw-net">৳0</strong></div>
-      </div>
-    </div>
-
-    <!-- Amount input -->
     <div class="withdraw-input-wrap">
-      <input class="withdraw-input" type="number" id="withdraw-amount" placeholder="Enter amount" min="500000" inputmode="numeric" oninput="updateWithdrawalPreview()" />
-      <span class="withdraw-currency">OX</span>
+      <input class="withdraw-input" type="number" id="withdraw-amount" placeholder="Enter points amount" min="1" inputmode="numeric" />
+      <span class="withdraw-currency">ROKT</span>
     </div>
 
-    <!-- Method -->
-    <div class="section-title">Payment Method</div>
-    <div class="method-grid">
-      <div class="method-btn" data-method="bkash" onclick="selectMethod(this)">bKash</div>
-      <div class="method-btn" data-method="nagad" onclick="selectMethod(this)">Nagad</div>
-      <div class="method-btn" data-method="rocket" onclick="selectMethod(this)">Rocket</div>
-    </div>
-
-    <!-- Destination -->
-    <input class="withdraw-input" type="text" id="withdraw-destination"
-           placeholder="Enter phone / wallet number" style="margin-top:10px;font-size:15px;padding:14px;" />
-
-    <!-- Submit -->
-    <button class="btn btn-primary" onclick="submitWithdrawal()" style="margin-top:16px;">
-      💸 Request Withdrawal
+    <button class="btn btn-primary" onclick="showToast('Demo only: no real withdrawal is available','error')" style="margin-top:16px;">
+      Submit Demo Request
     </button>
 
     <div style="margin-top:16px;font-size:12px;color:var(--text-muted);text-align:center;">
-      ⚠️ Crypto withdrawal is currently disabled.
-      Withdrawals are reviewed within 24-48 hours.
+      ROKT is a demo points label in this version. No real token transfer or payout is enabled.
     </div>
   </main>
 
@@ -393,7 +375,7 @@
     </button>
     <button class="nav-item" data-screen="withdraw">
       <span class="nav-icon">💸</span>
-      <span class="nav-label">Withdraw</span>
+      <span class="nav-label">Points</span>
     </button>
   </nav>
 
@@ -422,6 +404,7 @@
     <button class="btn btn-gold" id="btn-daily-claim" onclick="claimDailyReward()" style="margin-top:20px;">
       🎁 Claim Daily Reward
     </button>
+
     <button class="btn btn-outline" onclick="closeDailyModal()" style="margin-top:10px;">
       Close
     </button>
@@ -451,10 +434,12 @@
         <label style="font-size:12px;color:var(--text-secondary);display:block;margin-bottom:4px;">Task Name (slug)</label>
         <input type="text" id="task-name" placeholder="e.g. join_discord" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-primary);color:var(--text-primary);font-size:14px;" />
       </div>
+
       <div>
         <label style="font-size:12px;color:var(--text-secondary);display:block;margin-bottom:4px;">Display Name</label>
         <input type="text" id="task-display-name" placeholder="e.g. Join Discord Server" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-primary);color:var(--text-primary);font-size:14px;" />
       </div>
+
       <div>
         <label style="font-size:12px;color:var(--text-secondary);display:block;margin-bottom:4px;">Task Type</label>
         <select id="task-type" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-primary);color:var(--text-primary);font-size:14px;">
@@ -467,23 +452,28 @@
           <option value="INVITE_FRIEND">Invite Friend</option>
         </select>
       </div>
+
       <div>
-        <label style="font-size:12px;color:var(--text-secondary);display:block;margin-bottom:4px;">Reward (OX)</label>
+        <label style="font-size:12px;color:var(--text-secondary);display:block;margin-bottom:4px;">Reward (ROKT)</label>
         <input type="number" id="task-reward" placeholder="e.g. 500" min="1" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-primary);color:var(--text-primary);font-size:14px;" />
       </div>
+
       <div>
         <label style="font-size:12px;color:var(--text-secondary);display:block;margin-bottom:4px;">Description (optional)</label>
         <input type="text" id="task-description" placeholder="e.g. Join our official channel" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-primary);color:var(--text-primary);font-size:14px;" />
       </div>
+
       <div>
         <label style="font-size:12px;color:var(--text-secondary);display:block;margin-bottom:4px;">Target URL (optional)</label>
         <input type="text" id="task-url" placeholder="e.g. https://t.me/channel" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-primary);color:var(--text-primary);font-size:14px;" />
       </div>
+
       <div style="display:flex;gap:10px;">
         <label style="flex:1;display:flex;align-items:center;gap:8px;cursor:pointer;">
           <input type="checkbox" id="task-repeatable" />
           <span style="font-size:13px;">Repeatable</span>
         </label>
+
         <label style="flex:1;display:flex;align-items:center;gap:8px;cursor:pointer;">
           <input type="checkbox" id="task-active" checked />
           <span style="font-size:13px;">Active</span>
@@ -494,6 +484,7 @@
     <button class="btn btn-primary" id="btn-submit-task" onclick="submitAddTask(this)" style="margin-top:20px;width:100%;">
       ➕ Create Task
     </button>
+
     <button class="btn btn-outline" onclick="closeAddTaskModal()" style="margin-top:10px;width:100%;">
       Cancel
     </button>
@@ -505,12 +496,14 @@
 
 <!-- App Script -->
 <script src="js/app.js"></script>
+
 <script>
 function openDailyModal() {
   const modal = document.getElementById('daily-modal');
   modal.style.display = 'flex';
   loadDailyReward();
 }
+
 function closeDailyModal() {
   document.getElementById('daily-modal').style.display = 'none';
 }
@@ -518,3 +511,4 @@ function closeDailyModal() {
 
 </body>
 </html>
+
