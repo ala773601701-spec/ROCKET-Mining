@@ -1,5 +1,5 @@
 /**
- * OX Mining — Frontend JS
+ * ROKT Mining — Frontend JS
  * Handles: Telegram Auth, Mining, Ads, Referrals, Daily, Tasks, Leaderboard, Withdrawal
  */
 
@@ -323,7 +323,7 @@ function renderMiningUI(data) {
 
   // Mining rate badge
   const rateBadge = document.getElementById('mining-rate-badge');
-  if (rateBadge) rateBadge.textContent = `+${data.mining_rate} OX / hour`;
+  if (rateBadge) rateBadge.textContent = `+${data.mining_rate} ROKT / hour`;
 
   renderMiningProgress(data);
   renderMiningButtons(data);
@@ -346,12 +346,12 @@ function renderMiningProgress(data) {
     } else if (data.session_full) {
       progressTime.textContent = '🔔 Session full — Claim now!';
     } else {
-      progressTime.textContent = 'Start mining to earn OX';
+      progressTime.textContent = 'Start mining to earn ROKT';
     }
   }
 
   if (earnedEl) {
-    earnedEl.textContent = data.is_mining ? `+${formatCoins(data.earned_this_session || 0)} OX` : '--';
+    earnedEl.textContent = data.is_mining ? `+${formatCoins(data.earned_this_session || 0)} ROKT` : '--';
   }
 }
 
@@ -389,7 +389,7 @@ async function claimMining() {
 
   const res = await apiCall('/mining/claim', 'POST');
   if (res.ok) {
-    showToast(`✅ Claimed ${formatCoins(res.data.coins_earned)} OX!`, 'success');
+    showToast(`✅ Claimed ${formatCoins(res.data.coins_earned)} ROKT!`, 'success');
     updateBalanceDisplay(res.data.new_balance);
     if (state.miningTimer) clearInterval(state.miningTimer);
     await loadMiningStatus();
@@ -426,7 +426,7 @@ function renderBoostPlans(plans) {
       <div class="boost-plan-emoji">${p.emoji}</div>
       <div class="boost-plan-name">${p.display_name}</div>
       <div class="boost-plan-rate">${p.mining_rate}</div>
-      <div class="boost-plan-unit">OX / hour</div>
+      <div class="boost-plan-unit">ROKT / hour</div>
       ${p.price_stars === 0
         ? `<div class="boost-plan-free">Free</div>`
         : `<div class="boost-plan-price">⭐ ${p.price_stars} Stars</div>
@@ -519,7 +519,7 @@ async function watchAd() {
       ad_type: 'rewarded_interstitial',
     });
     if (res.ok) {
-      showToast(`🎬 +${res.data.coins_earned} OX!`, 'success');
+      showToast(`🎬 +${res.data.coins_earned} ROKT!`, 'success');
       updateBalanceDisplay(res.data.new_balance);
       startAdCooldown(5 * 60);
       preloadRewardedAd();
@@ -541,7 +541,7 @@ async function simulateDevAdReward() {
       ad_type: 'rewarded_interstitial',
     });
     if (res.ok) {
-      showToast(`+${res.data.coins_earned} OX!`, 'success');
+      showToast(`+${res.data.coins_earned} ROKT!`, 'success');
       updateBalanceDisplay(res.data.new_balance);
       startAdCooldown(30); // shorter cooldown in dev
     } else {
@@ -610,7 +610,7 @@ async function copyReferralLink() {
 function shareReferralLink() {
   if (tg) {
     tg.openTelegramLink(
-      `https://t.me/share/url?url=${encodeURIComponent(state.referralLink)}&text=${encodeURIComponent('🐂 Join me on OX Mining and earn OX!')}`
+      `https://t.me/share/url?url=${encodeURIComponent(state.referralLink)}&text=${encodeURIComponent('🐂 Join me on ROKT Mining and earn ROKT!')}`
     );
   } else {
     copyReferralLink();
@@ -661,7 +661,7 @@ async function claimDailyReward() {
 
   const res = await apiCall('/rewards/daily', 'POST');
   if (res.ok) {
-    showToast(`🎁 Day ${res.data.day}: +${formatCoins(res.data.coins_earned)} OX!`, 'success');
+    showToast(`🎁 Day ${res.data.day}: +${formatCoins(res.data.coins_earned)} ROKT!`, 'success');
     updateBalanceDisplay(res.data.new_balance);
     loadDailyReward();
   } else {
@@ -707,7 +707,7 @@ async function loadTasks() {
         <div class="task-icon">${ICONS[task.task_type] || '✅'}</div>
         <div class="task-info">
           <div class="task-title">${task.display_name || task.name || 'Task'}</div>
-          <div class="task-reward">+${formatCoins(task.reward_coins || 0)} OX</div>
+          <div class="task-reward">+${formatCoins(task.reward_coins || 0)} ROKT</div>
         </div>
         <div class="task-action">
           ${task.user_status === 'COMPLETED'
@@ -746,7 +746,7 @@ function openTask(taskId) {
 async function completeTask(taskId) {
   const res = await apiCall(`/tasks/${taskId}/complete`, 'POST');
   if (res.ok) {
-    showToast(`✅ +${formatCoins(res.data.coins_earned)} OX!`, 'success');
+    showToast(`✅ +${formatCoins(res.data.coins_earned)} ROKT!`, 'success');
     updateBalanceDisplay(res.data.new_balance);
     loadTasks();
   } else {
@@ -860,7 +860,7 @@ async function loadLeaderboard() {
           <div class="lb-name">${entry.first_name || 'Anonymous'}${entry.is_me ? ' (You)' : ''}</div>
           <div class="lb-coins">${entry.username ? '@' + entry.username : ''}</div>
         </div>
-        <div class="lb-amount">${formatCoins(entry.coins ?? entry.mined_coins_total ?? 0)} OX</div>
+        <div class="lb-amount">${formatCoins(entry.coins ?? entry.mined_coins_total ?? 0)} ROKT</div>
       </div>
     `).join('');
 
